@@ -7,7 +7,20 @@ const createUser = async (req: Request, res: Response) => {
     const result = await UserService.createUser(req.body);
     res.send({
       sucess: true,
-      message: "User Created Succesfully",
+      message: "User Created Successfully",
+      data: result
+    })
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const insertOrUpdateProfile = async (req: Request, res: Response) => {
+  try {
+    const result = await UserService.insertOrUpdateProfile(req.body);
+    res.send({
+      sucess: true,
+      message: "Profile Created/Updated Successfully",
       data: result
     })
   } catch (err) {
@@ -16,5 +29,6 @@ const createUser = async (req: Request, res: Response) => {
 }
 
 export const UserController = {
-  createUser
+  createUser,
+  insertOrUpdateProfile
 }
