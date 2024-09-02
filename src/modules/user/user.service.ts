@@ -7,6 +7,11 @@ const createUser = async (data: User) : Promise<User> => {
   return result;
 }
 
+const getAllUser = async (): Promise<User[]> => {
+  const result = await prisma.user.findMany();
+  return result;
+}
+
 const insertOrUpdateProfile = async (data: Profile): Promise<Profile> => {
   const isExist = await prisma.profile.findUnique({
     where: {
@@ -32,5 +37,6 @@ const insertOrUpdateProfile = async (data: Profile): Promise<Profile> => {
 
 export const UserService = {
   createUser,
+  getAllUser,
   insertOrUpdateProfile
 }

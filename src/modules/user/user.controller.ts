@@ -14,6 +14,18 @@ const createUser = async (req: Request, res: Response) => {
     console.log(err);
   }
 }
+const getAllUser = async (req: Request, res: Response) => {
+  try {
+    const result = await UserService.getAllUser();
+    res.send({
+      sucess: true,
+      message: "User fetched Successfully",
+      data: result
+    })
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 const insertOrUpdateProfile = async (req: Request, res: Response) => {
   try {
@@ -30,5 +42,6 @@ const insertOrUpdateProfile = async (req: Request, res: Response) => {
 
 export const UserController = {
   createUser,
+  getAllUser,
   insertOrUpdateProfile
 }
