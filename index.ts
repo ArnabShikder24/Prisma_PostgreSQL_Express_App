@@ -11,7 +11,7 @@ async function main() {
     data: {
       email: "arnab2@gmail.com",
       name: "Arnab2",
-      age: 23
+      role: "bolod"
     }
   });
   console.log(createUser);
