@@ -19,24 +19,30 @@ model User {
   email String @unique
   name String
   role String
+  profile Profile?
+  posts Post[]
 }
 
 model Profile {
   profileId Int @id @default(autoincrement())
   bio String
-  userId Int
+  userId Int @unique
+  user User @relation(fields: [userId], references: [userId])
 }
 
 model Category {
   categoryId Int @id @default(autoincrement())
   name String
+  posts Post[]
 }
 
 model Post {
   postId Int @id @default(autoincrement())
   title String
   userId Int
+  user User @relation(fields: [userId], references: [userId])
   categoryId Int
+  category Category @relation(fields: [categoryId], references: [categoryId])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
